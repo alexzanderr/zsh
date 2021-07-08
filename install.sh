@@ -4,8 +4,11 @@
 #
 #
 
+
 username=$USER
 home=/home/$username
+
+cd $home
 
 pwd
 
