@@ -8,7 +8,6 @@
 home=/home/alexzander
 echo -e "home is: $home"
 
-cd $home
 
 pwd
 
@@ -25,6 +24,7 @@ rm -rf $home/zsh
 rm -rf /root/zsh
 
 # adding the repo
+cd $home
 git clone https://github.com/alexzanderr/zsh
 cd zsh
 
@@ -40,7 +40,7 @@ cp alexzander-custom.zsh-theme /root/.config/zsh
 cp .zshrc $home/.config/zsh
 cp .zshrc /root/.config/zsh
 
-# my custom scripts
+# my customasd scripts
 cp -r zsh_python_scripts $home/.config/zsh
 cp -r zsh_python_scripts /root/.config/zsh
 
@@ -52,13 +52,17 @@ mkdir -p /etc/zsh
 
 cp zshenv /etc/zsh
 cp zprofile /etc/zsh
-
-
 # installing everything in home config
+
+
 cd $home/.config/zsh
 git clone https://github.com/zplug/zplug ./.zplug
 git clone https://github.com/ohmyzsh/ohmyzsh.git ./.oh-my-zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh-autosuggestions
+
+# and change permissions in home only
+# because when you run zsh as normal user you cant do some things, because ownership was set to root due to sudo installation
+chown alexzander $home/.config/zsh
 
 
 # installing everything in root config
@@ -68,8 +72,15 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git ./.oh-my-zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh-autosuggestions
 
 
+
+
+# at the end
+# remove the zsh from git clone
+rm -rf $home/zsh
+
 echo -e "\ndone.\n"
 
-echo -e "\nzsh activated\n"
 
-zsh
+
+
+
