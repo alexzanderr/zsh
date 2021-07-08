@@ -6,14 +6,18 @@
 
 pwd
 
-mkdir -p ~/.config/zsh
+sudo rm -rf ~/.config/zsh
 
+sudo mkdir -p ~/.config/zsh
+
+sudo rm -rf ./zsh
 git clone https://github.com/alexzanderr/zsh
 cd zsh
 
 # in case it doesnt exist
 
 # copy only what we need
+pwd
 cp alexzander-custom.zsh-theme ~/.config/zsh
 cp .zshrc ~/.config/zsh
 cp -r zsh_python_scripts ~/.config/zsh
@@ -25,7 +29,9 @@ sudo cp zshenv /etc/zsh
 sudo cp zprofile /etc/zsh
 
 
+pwd
 cd ~/.config/zsh
+pwd
 
 # installing zplug (its just copy paste from github)
 git clone https://github.com/zplug/zplug ./.zplug
