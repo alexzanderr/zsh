@@ -794,4 +794,12 @@ echo -e "$fg[yellow]prompt-theme$reset_color$gray_colon $ZDOTDIR$fg[green]/alexz
 
 # zsh is updated constantly from atom
 
-export SSH_CONNECTION_ROOT=$SSH_CONNECTION
+# exportam o singura data o variabila globala
+if [[ $SSH_CONNECTION ]]; then
+    echo -e "export SSH_GLOBAL='$SSH_CONNECTION'" >> /etc/zsh/zshenv
+else
+    if [[ $SSH_GLOBAL ]]; then
+        unset SSH_GLOBAL
+        sed -i '$ d' /etc/zsh/zshenv
+    fi
+fi
