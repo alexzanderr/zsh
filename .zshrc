@@ -747,6 +747,7 @@ alias ml="hg log"
 alias mp="hg push"
 alias mu="ma && mc"
 
+# git folder its ignored when treeing
 alias tree="tree -I '.git' -a"
 alias tre="tree -I '.git' -a"
 # alias tree="tree -a -h"
@@ -765,6 +766,8 @@ alias pt="lsblk"
 alias size="du -sh"
 alias siz="du -sh"
 alias ca="cat"
+
+alias cp="cp -v"
 
 # bindkey "^[[1~" beginning-of-line
 # bindkey "^[[4~" end-of-line
