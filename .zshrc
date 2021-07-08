@@ -748,6 +748,7 @@ alias pt="lsblk"
 alias size="du -sh"
 alias siz="du -sh"
 alias ca="cat"
+alias gu="ga && gc 'done' && gp"
 
 # bindkey "^[[1~" beginning-of-line
 # bindkey "^[[4~" end-of-line

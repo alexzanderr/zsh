@@ -94,72 +94,35 @@ git_status="%{$fg[cyan]%}${git_info}"
 
 cursor="%{$terminfo[bold]$fg[white]%}> %{$reset_color%}"
 
-virtual_environment="%{$terminfo[bold]$fg[black]%}(%{$terminfo[bold]$fg[cyan]%}$(basename $VIRTUAL_ENV)%{$terminfo[bold]$fg[black]%})"
-
-root_mode="%{$terminfo[bold]$fg[black]%}[$reset_color%{$terminfo[bold]$fg[red]%}sudo%{$terminfo[bold]$fg[black]%}]"
 
 
-ssh_connection=$SSH_CONNECTION
-ssh_list=(${(s: :)cwd})
-host_ip=$ssh_list[2]
-# right_powerline_arrow=$"\ue0b1"
-# cwd=${(j: $right_powerline_arrow :)cwd_list}
-
-ssh_mode="%{$terminfo[bold]$fg[black]%}(%{$terminfo[bold]$fg[blue]%}$host_ip %{$terminfo[bold]$fg[black]%})$reset_color"
 
 
-function update_prompt_and_venv() {
+function update_prompt_and_venv () {
+    local ssh_mode=""
+    local root_mode=""
+    local virtual_environment=""
 
     if [ $VIRTUAL_ENV ]; then
-
-        if [[ $UID == 0 || $EUID == 0 ]]; then
-            # sudo mode
-
-            if [ $SSH_CONNECTION ]; then
-                PROMPT="
-$ssh_mode $root_mode $virtual_environment $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            else
-                PROMPT="
-$root_mode $virtual_environment $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            fi
-        else
-            if [ $SSH_CONNECTION ]; then
-                PROMPT="
-$ssh_mode $virtual_environment $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            else
-                PROMPT="
-$virtual_environment $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            fi
-        fi
-
-    else
-        if [[ $UID == 0 || $EUID == 0 ]]; then
-
-            if [ $SSH_CONNECTION ]; then
-                PROMPT="
-$ssh_mode $root_mode $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            else
-                PROMPT="
-$root_mode $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            fi
-        else
-            if [ $SSH_CONNECTION ]; then
-                PROMPT="
-$ssh_mode $left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            else
-                PROMPT="
-$left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
-$cursor"
-            fi
-        fi
+        virtual_environment="%{$terminfo[bold]$fg[black]%}(%{$terminfo[bold]$fg[cyan]%}$(basename $VIRTUAL_ENV)%{$terminfo[bold]$fg[black]%}) "
     fi
+
+    if [[ $UID == 0 || $EUID == 0 ]]; then
+        # sudo mode
+        root_mode="%{$terminfo[bold]$fg[black]%}[$reset_color%{$terminfo[bold]$fg[red]%}sudo%{$terminfo[bold]$fg[black]%}] "
+    fi
+
+    if [ $SSH_CONNECTION ]; then
+        ssh_connection=$SSH_CONNECTION
+        ssh_list=(${(s: :)ssh_connection})
+        host_ip=$ssh_list[3]
+        ssh_mode="%{$terminfo[bold]$fg[black]%}(%{$terminfo[bold]$fg[blue]%}$host_ip% $terminfo[bold]$fg[black]%})$reset_color "
+    fi
+
+    PROMPT="
+$ssh_mode$root_mode$virtual_environment$left_square_bracket$current_working_directory$right_square_bracket \$vcs_info_msg_0_
+$cursor"
+
 }
 precmd_functions+=(update_prompt_and_venv)
 
@@ -210,8 +173,5 @@ precmd_functions+=(update_prompt_and_venv)
 
 
 
-# am scris din alexzander
-#
-# am scris din sudo
 
 
