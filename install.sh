@@ -62,7 +62,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh-autosuggestions
 
 # and change permissions in home only
 # because when you run zsh as normal user you cant do some things, because ownership was set to root due to sudo installation
-chown alexzander $home/.config/zsh
+chown -R alexzander.alexzander $home/.config/zsh
 
 
 # installing everything in root config
