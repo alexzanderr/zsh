@@ -96,7 +96,6 @@ cursor="%{$terminfo[bold]$fg[white]%}> %{$reset_color%}"
 
 
 
-export ssh_active="false"
 
 function update_prompt_and_venv () {
     local ssh_mode=""
@@ -112,16 +111,11 @@ function update_prompt_and_venv () {
         root_mode="%{$terminfo[bold]$fg[black]%}[$reset_color%{$terminfo[bold]$fg[red]%}sudo%{$terminfo[bold]$fg[black]%}] "
     fi
 
-    if [ $SSH_CONNECTION ]; then
-        export ssh_active="true"
-        ssh_connection=$SSH_CONNECTION
+    if [[ $SSH_CONNECTION || $SSH_CONNECTION_ROOT ]]; then
+        ssh_connection=$SSH_CONNECTION_ROOT
         ssh_list=(${(s: :)ssh_connection})
         host_ip=$ssh_list[3]
         ssh_mode="$fg[blue]ssh%{$terminfo[bold]$fg[black]%}:(%{$terminfo[bold]$fg[blue]%}$host_ip% $terminfo[bold]$fg[black]%})$reset_color "
-
-    elif [ ssh_active == "true"]; then
-        ssh_mode="$fg[blue]ssh%{$terminfo[bold]$fg[black]%}:(%{$terminfo[bold]$fg[blue]%}DA% $terminfo[bold]$fg[black]%})$reset_color "
-
     fi
 
     PROMPT="

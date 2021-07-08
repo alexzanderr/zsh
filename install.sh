@@ -101,6 +101,8 @@ pip install colored_traceback
 
 
 # python part
+rm -rf $home/Alexzander__/programming/python3
+
 mkdir -p $home/Alexzander__/programming
 cd $home/Alexzander__/programming
 git clone https://github.com/alexzanderr/python3.git

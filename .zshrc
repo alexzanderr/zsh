@@ -793,3 +793,5 @@ echo -e "$fg[yellow]prompt-theme$reset_color$gray_colon $ZDOTDIR$fg[green]/alexz
 
 
 # zsh is updated constantly from atom
+
+export SSH_CONNECTION_ROOT=$SSH_CONNECTION
