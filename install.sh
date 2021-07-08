@@ -6,6 +6,7 @@
 
 
 git clone https://github.com/alexzanderr/zsh
+cd zsh
 
 # in case it doesnt exist
 mkdir -p ~/.config/zsh
