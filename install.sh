@@ -81,15 +81,23 @@ rm -rf $home/zsh
 # dependencies
 if ! command -v lolcat &> /dev/null
 then
-    echo -e "lolcat could not be found\ninstalling..."
+    echo -e "lolcat could not be found\ninstalling...\n"
     apt install lolcat
 fi
 
 if ! command -v fzf &> /dev/null
 then
-    echo -e "lolcat could not be found\ninstalling..."
+    echo -e "lolcat could not be found\ninstalling...\n"
     apt install fzf
 fi
+
+if ! command -v pip &> /dev/null
+then
+    echo -e "pip could not be found\ninstalling...\n"
+    apt install python3-pip
+fi
+
+pip install colored_traceback
 
 
 # python part
@@ -101,9 +109,14 @@ git clone https://github.com/alexzanderr/python3.git
 echo "export PYTHONPATH=$PYTHONPATH:/home/alexzander/Alexzander__/programming/python3" >> $home/.profile
 echo "export PYTHONPATH=$PYTHONPATH:/home/alexzander/Alexzander__/programming/python3" >> /root/.profile
 
+
 echo -e "\ndone.\n"
 
 
+# in case zplug cant load fzy, its because you must install fzy
+
+# fzy is a fast, simple fuzzy text selector for the terminal with an advanced scoring algorithm
+# fix with sudo apt install fzy
 
 
 

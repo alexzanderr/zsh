@@ -75,7 +75,14 @@ source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zplug BEGIN
 # zplug "eendroroy/alien"
 zplug "zsh-users/zsh-syntax-highlighting"
+
+# https://github.com/jhawthorn/fzy
+# for this you need
+# sudo pacman -S fzy
+# sudo apt install fzy
 zplug "aperezdc/zsh-fzy"
+
+
 # zplug "ChesterYue/ohmyzsh-theme-passion"
 # zplug "changyuheng/fz", defer:1
 # zplug "rupa/z", use:z.sh
