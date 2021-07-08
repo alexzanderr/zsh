@@ -4,42 +4,69 @@
 #
 #
 
+username=$USER
+home=/home/$username
+
 pwd
 
-sudo rm -rf ~/.config/zsh
+# removing everything to make clean
+rm -rf $home/.config/zsh
+rm -rf /root/.config/zsh
 
-sudo mkdir -p ~/.config/zsh
+# creating empty dirs
+mkdir -p $home/.config/zsh
+mkdir -p /root/.config/zsh
 
-sudo rm -rf ./zsh
+# removing the git cloned repo if already existent
+rm -rf $home/zsh
+rm -rf /root/zsh
+
+# adding the repo
 git clone https://github.com/alexzanderr/zsh
 cd zsh
 
 # in case it doesnt exist
 
 # copy only what we need
-pwd
-cp alexzander-custom.zsh-theme ~/.config/zsh
-cp .zshrc ~/.config/zsh
-cp -r zsh_python_scripts ~/.config/zsh
+
+# the prompt
+cp alexzander-custom.zsh-theme $home/.config/zsh
+cp alexzander-custom.zsh-theme /root/.config/zsh
+
+# the rc
+cp .zshrc $home/.config/zsh
+cp .zshrc /root/.config/zsh
+
+# my custom scripts
+cp -r zsh_python_scripts $home/.config/zsh
+cp -r zsh_python_scripts /root/.config/zsh
+
 
 # without this you are mucles
 # in case it doesnt exist
-sudo mkdir -p /etc/zsh
-sudo cp zshenv /etc/zsh
-sudo cp zprofile /etc/zsh
+rm -rf /etc/zsh
+mkdir -p /etc/zsh
+
+cp zshenv /etc/zsh
+cp zprofile /etc/zsh
 
 
-pwd
-cd ~/.config/zsh
-pwd
-
-# installing zplug (its just copy paste from github)
+# installing everything in home config
+cd $home/.config/zsh
 git clone https://github.com/zplug/zplug ./.zplug
-
-# installing oh-my-zsh framework
 git clone https://github.com/ohmyzsh/ohmyzsh.git ./.oh-my-zsh
-
-# installing zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh-autosuggestions
 
+
+# installing everything in root config
+cd /root/.config/zsh
+git clone https://github.com/zplug/zplug ./.zplug
+git clone https://github.com/ohmyzsh/ohmyzsh.git ./.oh-my-zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh-autosuggestions
+
+
 echo -e "\ndone.\n"
+
+echo -e "\nzsh activated\n"
+
+zsh
