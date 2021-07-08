@@ -4,21 +4,25 @@
 #
 #
 
+pwd
+
+mkdir -p ~/.config/zsh
 
 git clone https://github.com/alexzanderr/zsh
 cd zsh
 
 # in case it doesnt exist
-mkdir -p ~/.config/zsh
 
 # copy only what we need
-cp -r ./alexzander-custom.zsh-theme ./.zshrc ./zsh_python_scripts ~/.config/zsh
+cp alexzander-custom.zsh-theme ~/.config/zsh
+cp .zshrc ~/.config/zsh
+cp -r zsh_python_scripts ~/.config/zsh
 
 # without this you are mucles
 # in case it doesnt exist
 sudo mkdir -p /etc/zsh
-sudo cp ./zshenv /etc/zsh
-sudo cp ./zprofile /etc/zsh
+sudo cp zshenv /etc/zsh
+sudo cp zprofile /etc/zsh
 
 
 cd ~/.config/zsh
