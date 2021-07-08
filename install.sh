@@ -6,6 +6,7 @@
 
 # if you run this script with root, ofc the user is root
 home=/home/alexzander
+echo -e "home is: $home"
 
 cd $home
 
