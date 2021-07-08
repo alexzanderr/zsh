@@ -25,7 +25,7 @@ rm -rf /root/zsh
 
 # adding the repo
 cd $home
-git clone https://github.com/alexzanderr/zsh
+git clone https://github.com/alexzanderr/zsh.git
 cd zsh
 
 # in case it doesnt exist
@@ -77,6 +77,29 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh-autosuggestions
 # at the end
 # remove the zsh from git clone
 rm -rf $home/zsh
+
+# dependencies
+if ! command -v lolcat &> /dev/null
+then
+    echo -e "lolcat could not be found\ninstalling..."
+    apt install lolcat
+fi
+
+if ! command -v fzf &> /dev/null
+then
+    echo -e "lolcat could not be found\ninstalling..."
+    apt install fzf
+fi
+
+
+# python part
+mkdir -p $home/Alexzander__/programming
+cd $home/Alexzander__/programming
+git clone https://github.com/alexzanderr/python3.git
+
+
+echo "export PYTHONPATH=$PYTHONPATH:/home/alexzander/Alexzander__/programming/python3" >> $home/.profile
+echo "export PYTHONPATH=$PYTHONPATH:/home/alexzander/Alexzander__/programming/python3" >> /root/.profile
 
 echo -e "\ndone.\n"
 
