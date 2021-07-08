@@ -737,6 +737,14 @@ alias gp="git push -f origin master"
 alias gfp="git ftp push"
 alias gfpp="git push -f origin master && echo -e '\n--------------\n' && git ftp push"
 
+# mercurial aliases
+alias mi="hg init"
+alias ma="hg add ."
+alias mc="hg commit -m"
+alias ms="hg status"
+alias ml="hg log"
+alias mp="hg push"
+
 alias tree="tree -I '.git' -a"
 alias tre="tree -I '.git' -a"
 # alias tree="tree -a -h"
@@ -795,11 +803,11 @@ echo -e "$fg[yellow]prompt-theme$reset_color$gray_colon $ZDOTDIR$fg[green]/alexz
 # zsh is updated constantly from atom
 
 # exportam o singura data o variabila globala
-if [[ $SSH_CONNECTION ]]; then
-    echo -e "export SSH_GLOBAL='$SSH_CONNECTION'" >> /etc/zsh/zshenv
-else
-    if [[ $SSH_GLOBAL ]]; then
-        unset SSH_GLOBAL
-        sed -i '$ d' /etc/zsh/zshenv
-    fi
-fi
+# if [[ $SSH_CONNECTION ]]; then
+#     echo -e "export SSH_GLOBAL='$SSH_CONNECTION'" >> /etc/zsh/zshenv
+# else
+#     if [[ $SSH_GLOBAL ]]; then
+#         unset SSH_GLOBAL
+#         sed -i '$ d' /etc/zsh/zshenv
+#     fi
+# fi

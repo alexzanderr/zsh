@@ -117,11 +117,11 @@ function update_prompt_and_venv () {
         host_ip=$ssh_list[3]
         ssh_mode="%{$terminfo[bold]$fg[blue]%}ssh%{$terminfo[bold]$fg[black]%}:(%{$terminfo[bold]$fg[blue]%}$host_ip% $terminfo[bold]$fg[black]%})$reset_color "
 
-    else if [[ $SSH_GLOBAL ]]; then
-        ssh_connection=$SSH_GLOBAL
-        ssh_list=(${(s: :)ssh_connection})
-        host_ip=$ssh_list[3]
-        ssh_mode="%{$terminfo[bold]$fg[blue]%}ssh%{$terminfo[bold]$fg[black]%}:(%{$terminfo[bold]$fg[blue]%}$host_ip% $terminfo[bold]$fg[black]%})$reset_color "
+    # else if [[ $SSH_GLOBAL ]]; then
+    #     ssh_connection=$SSH_GLOBAL
+    #     ssh_list=(${(s: :)ssh_connection})
+    #     host_ip=$ssh_list[3]
+    #     ssh_mode="%{$terminfo[bold]$fg[blue]%}ssh%{$terminfo[bold]$fg[black]%}:(%{$terminfo[bold]$fg[blue]%}$host_ip% $terminfo[bold]$fg[black]%})$reset_color "
     fi
 
     PROMPT="
