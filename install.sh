@@ -4,9 +4,8 @@
 #
 #
 
-
-username=$USER
-home=/home/$username
+# if you run this script with root, ofc the user is root
+home=/home/alexzander
 
 cd $home
 
