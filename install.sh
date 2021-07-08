@@ -112,6 +112,8 @@ echo "export PYTHONPATH=$PYTHONPATH:/home/alexzander/Alexzander__/programming/py
 echo "export PYTHONPATH=$PYTHONPATH:/home/alexzander/Alexzander__/programming/python3" >> /root/.profile
 
 
+chown -R alexzander.alexzander /etc/zsh
+
 echo -e "\ndone.\n"
 
 
