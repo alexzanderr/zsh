@@ -736,6 +736,7 @@ alias gl="git log"
 alias gp="git push -f origin master"
 alias gfp="git ftp push"
 alias gfpp="git push -f origin master && echo -e '\n--------------\n' && git ftp push"
+alias gu="ga && gc 'done' && gp"
 
 # mercurial aliases
 alias mi="hg init"
@@ -744,6 +745,7 @@ alias mc="hg commit -m"
 alias ms="hg status"
 alias ml="hg log"
 alias mp="hg push"
+alias mu="ma && mc"
 
 alias tree="tree -I '.git' -a"
 alias tre="tree -I '.git' -a"
@@ -763,7 +765,6 @@ alias pt="lsblk"
 alias size="du -sh"
 alias siz="du -sh"
 alias ca="cat"
-alias gu="ga && gc 'done' && gp"
 
 # bindkey "^[[1~" beginning-of-line
 # bindkey "^[[4~" end-of-line
